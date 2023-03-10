@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import DobleDano from "./DobleDano";
-import MitadDano from "./MitadDano";
-import NoDano from "./NoDano";
+import TablaEficacia from "./TablaEficacia";
 
 function Eficacias() {
   const [tipos, setTipos] = useState([]);
@@ -39,11 +37,15 @@ function Eficacias() {
           ))}
         </select>
       </div>
-      <div className="row mt-3">
-        {tipoSeleccionado && <DobleDano idTipo={tipoSeleccionado} />}
-        {tipoSeleccionado && <MitadDano idTipo={tipoSeleccionado} />}
-        {tipoSeleccionado && <NoDano idTipo={tipoSeleccionado} />}
-      </div>
+      {tipoSeleccionado && (
+        <TablaEficacia idTipo={tipoSeleccionado} idEficacia={1} />
+      )}
+      {tipoSeleccionado && (
+        <TablaEficacia idTipo={tipoSeleccionado} idEficacia={2} />
+      )}
+      {tipoSeleccionado && (
+        <TablaEficacia idTipo={tipoSeleccionado} idEficacia={3} />
+      )}
     </div>
   );
 }
