@@ -3,7 +3,7 @@ import axios from "axios";
 
 function TablaEficacia(props) {
   const [eficacia, setEficacia] = useState([]);
-  let tableHeader = "";
+  let tituloTabla = "";
 
   useEffect(() => {
     const fetchData = async () => {
@@ -16,36 +16,22 @@ function TablaEficacia(props) {
   }, [props.idEficacia, props.idTipo]);
 
   if (props.idEficacia === 1) {
-    tableHeader = (
-      <thead className="table-dark bg-danger text-center">
-        <tr>
-          <th>Doble daño (x2)</th>
-        </tr>
-      </thead>
-    );
+    tituloTabla = "Doble daño (x2)";
   } else if (props.idEficacia === 2) {
-    tableHeader = (
-      <thead className="table-dark bg-danger text-center">
-        <tr>
-          <th>Mitad de daño (x0.5)</th>
-        </tr>
-      </thead>
-    );
+    tituloTabla = "Mitad de daño (x0.5)";
   } else if (props.idEficacia === 3) {
-    tableHeader = (
-      <thead className="table-dark bg-danger text-center">
-        <tr>
-          <th>Sin daño (x0)</th>
-        </tr>
-      </thead>
-    );
+    tituloTabla = "Sin daño (x0)";
   }
 
   return (
     <div className="row mt-3">
       <div className="table-responsive col-sm-6">
         <table class="table table-stripped">
-          {tableHeader}
+          <thead className="table-dark bg-danger text-center">
+            <tr>
+              <th>{tituloTabla}</th>
+            </tr>
+          </thead>
           <tbody className="text-center">
             {eficacia.map((te) => (
               <tr key={te.tipo_afectado.id}>
