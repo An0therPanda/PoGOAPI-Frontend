@@ -8,7 +8,7 @@ function TablaEficacia(props) {
   useEffect(() => {
     const fetchData = async () => {
       const resultado = await axios(
-        `http://localhost:3001/api/eficacias/${props.idEficacia}/${props.idTipo}`
+        `http://localhost:3001/api/eficacia/${props.idEficacia}/${props.idTipo}`
       );
       setEficacia(resultado.data);
     };
